@@ -64,7 +64,7 @@ const About = () => {
             <div className='relative w-full h-full'>
               <Image
                 fill
-                src="/assets/blog/aboutus.jpeg"
+                src="/assets/blog/aboutus.webp"
                 alt="Interior del mercado coreano"
                 className="rounded-2xl shadow-2xl w-full h-96 object-cover"
               />

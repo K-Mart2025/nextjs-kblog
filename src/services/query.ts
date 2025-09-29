@@ -8,7 +8,7 @@ export const getProductsFiltered: QueryFunction<
   ["query", ProductFilters],
   number
 > = async ({ pageParam = 1, queryKey }) => {
-  const [_, filters] = queryKey;
+  const [, filters] = queryKey;
   const params = new URLSearchParams({
     page: pageParam.toString(),
 

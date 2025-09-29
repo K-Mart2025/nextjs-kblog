@@ -9,7 +9,7 @@ export const getProducts: QueryFunction<
   ["products", string],
   number
 > = async ({ queryKey }) => {
-  const [_, category] = queryKey;
+  const [, category] = queryKey;
   const response = await fetch(
     `${apiUrl}/api/client/?category=${category}`
   );
