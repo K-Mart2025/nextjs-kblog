@@ -8,6 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@tanstack/react-query':
+        specifier: ^5.85.5
+        version: 5.90.2(react@19.1.0)
+      gsap:
+        specifier: ^3.13.0
+        version: 3.13.0
+      lucide-react:
+        specifier: ^0.536.0
+        version: 0.536.0(react@19.1.0)
       next:
         specifier: 15.5.4
         version: 15.5.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -430,6 +439,14 @@ packages:
 
   '@tailwindcss/postcss@4.1.13':
     resolution: {integrity: sha512-HLgx6YSFKJT7rJqh9oJs/TkBFhxuMOfUKSBEPYwV+t78POOBsdQ7crhZLzwcH3T0UyUuOzU/GK5pk5eKr3wCiQ==}
+
+  '@tanstack/query-core@5.90.2':
+    resolution: {integrity: sha512-k/TcR3YalnzibscALLwxeiLUub6jN5EDLwKDiO7q5f4ICEoptJ+n9+7vcEFy5/x/i6Q+Lb/tXrsKCggf5uQJXQ==}
+
+  '@tanstack/react-query@5.90.2':
+    resolution: {integrity: sha512-CLABiR+h5PYfOWr/z+vWFt5VsOA2ekQeRQBFSKlcoW6Ndx/f8rfyVmq4LbgOM4GG2qtxAxjLYLOpCNTYm4uKzw==}
+    peerDependencies:
+      react: ^18 || ^19
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -1060,6 +1077,9 @@ packages:
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
 
+  gsap@3.13.0:
+    resolution: {integrity: sha512-QL7MJ2WMjm1PHWsoFrAQH/J8wUeqZvMtHO58qdekHpCfhvhSL4gSiz6vJf5EeMP0LOn3ZCprL2ki/gjED8ghVw==}
+
   has-bigints@1.1.0:
     resolution: {integrity: sha512-R3pbpkcIqv2Pm3dUwgjclDRVmWpTJW2DcMzcIhEXEx1oh/CEMObMm3KLmRJOdvhM7o4uQBnwr8pzRK2sJWIqfg==}
     engines: {node: '>= 0.4'}
@@ -1336,6 +1356,11 @@ packages:
   loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
+
+  lucide-react@0.536.0:
+    resolution: {integrity: sha512-2PgvNa9v+qz4Jt/ni8vPLt4jwoFybXHuubQT8fv4iCW5TjDxkbZjNZZHa485ad73NSEn/jdsEtU57eE1g+ma8A==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   magic-string@0.30.19:
     resolution: {integrity: sha512-2N21sPY9Ws53PZvsEpVtNuSW+ScYbQdp4b9qUaL+9QkHUrGFKo56Lg9Emg5s9V/qrtNBmiR01sYhUOwu3H+VOw==}
@@ -2096,6 +2121,13 @@ snapshots:
       '@tailwindcss/oxide': 4.1.13
       postcss: 8.5.6
       tailwindcss: 4.1.13
+
+  '@tanstack/query-core@5.90.2': {}
+
+  '@tanstack/react-query@5.90.2(react@19.1.0)':
+    dependencies:
+      '@tanstack/query-core': 5.90.2
+      react: 19.1.0
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
@@ -2910,6 +2942,8 @@ snapshots:
 
   graphemer@1.4.0: {}
 
+  gsap@3.13.0: {}
+
   has-bigints@1.1.0: {}
 
   has-flag@4.0.0: {}
@@ -3167,6 +3201,10 @@ snapshots:
   loose-envify@1.4.0:
     dependencies:
       js-tokens: 4.0.0
+
+  lucide-react@0.536.0(react@19.1.0):
+    dependencies:
+      react: 19.1.0
 
   magic-string@0.30.19:
     dependencies:

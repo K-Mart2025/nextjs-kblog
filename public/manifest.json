@@ -1,0 +1,17 @@
+{
+  "name": "K-Mart Blog",
+  "short_name": "K-Mart Blog",
+  "description": "Enterate de recetas, ofertas y más!",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3367D6",
+  "icons": [
+    {
+      "src": "./icon.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
