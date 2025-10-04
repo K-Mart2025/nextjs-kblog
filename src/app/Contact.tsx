@@ -1,16 +1,17 @@
 "use client"
 
-import ConfigContext from '@/contexts/ConfigContext';
+import { useConfig } from '@/hooks/useConfig';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, MapPin, MessageCircle, Phone, Send, User } from 'lucide-react';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
+  const config = useConfig()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,8 +19,6 @@ const Contact = () => {
     subject: '',
     message: ''
   });
-
-  const {config} = useContext(ConfigContext)
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -101,7 +100,7 @@ const Contact = () => {
             Contacto
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            ¿Tienes alguna pregunta sobre nuestros productos o servicios? 
+            ¿Tienes alguna pregunta sobre nuestros productos o servicios?
             Estamos aquí para ayudarte. Contáctanos de la forma que prefieras.
           </p>
         </div>
@@ -137,10 +136,10 @@ const Contact = () => {
                 Envíanos un Mensaje
               </h3>
               <p className="text-gray-600 mb-8 leading-relaxed text-lg">
-                Completa el formulario y nos pondremos en contacto contigo lo antes posible. 
+                Completa el formulario y nos pondremos en contacto contigo lo antes posible.
                 También puedes visitarnos directamente en nuestra tienda.
               </p>
-              
+
               <div className="space-y-6">
                 <div className="bg-white p-6 rounded-xl shadow-md">
                   <h4 className="font-bold text-gray-900 mb-3">⏰ Horarios de Atención</h4>
@@ -150,11 +149,11 @@ const Contact = () => {
                     <p>Domingo: 10:00 - 20:00</p>
                   </div>
                 </div>
-                
+
                 <div className="bg-white p-6 rounded-xl shadow-md">
                   <h4 className="font-bold text-gray-900 mb-3">🚚 Entregas</h4>
                   <p className="text-sm text-gray-600">
-                    Realizamos entregas en Madrid y área metropolitana. 
+                    Realizamos entregas en La Habana.
                     Consulta disponibilidad y tarifas.
                   </p>
                 </div>

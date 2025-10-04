@@ -4,6 +4,7 @@ import { newsItems } from '@/data/news';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Calendar, Zap } from 'lucide-react';
+import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -63,7 +64,7 @@ const News = () => {
             Noticias y Novedades
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Mantente al día con las últimas novedades, productos, eventos y ofertas especiales 
+            Mantente al día con las últimas novedades, productos, eventos y ofertas especiales
             de Korean Market. No te pierdas nada de lo que está pasando.
           </p>
         </div>
@@ -93,7 +94,9 @@ const News = () => {
                 </button>
               </div>
               <div className="md:w-1/3">
-                <img
+                <Image
+                  width={500}
+                  height={700}
                   src={newsItems[0].image}
                   alt={newsItems[0].title}
                   className="w-full h-64 md:h-full object-cover"
@@ -110,7 +113,9 @@ const News = () => {
                 className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group"
               >
                 <div className="relative overflow-hidden">
-                  <img
+                  <Image
+                    width={734}
+                    height={192}
                     src={item.image}
                     alt={item.title}
                     className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"

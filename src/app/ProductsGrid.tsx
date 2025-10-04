@@ -1,3 +1,4 @@
+import { useConfig } from "@/hooks/useConfig";
 import { Product, ProductComponentProps } from "@/types/product";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
@@ -5,7 +6,7 @@ import Image from "next/image";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const ProductsGrid = ({ filteredProducts, gridRef }: ProductComponentProps) => {
-   
+    const config = useConfig()
     if (!filteredProducts || filteredProducts.length === 0) {
         return (
             <div className="flex justify-center items-center h-64">
@@ -21,10 +22,11 @@ const ProductsGrid = ({ filteredProducts, gridRef }: ProductComponentProps) => {
                     key={product.id}
                     className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group"
                 >
-                    <div className="relative overflow-hidden w-full h-full">
+                    <div className="relative overflow-hidden w-full h-64">
                         <Image
-                            fill
-                            src={product.img?apiUrl + product.img:""}
+                            width={200}
+                            height={200}
+                            src={product.img ? apiUrl + product.img : "/fallback-image.jpg"}
                             alt={product.name}
                             className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
                         />
@@ -33,6 +35,7 @@ const ProductsGrid = ({ filteredProducts, gridRef }: ProductComponentProps) => {
                             <ShoppingCart size={20} className="text-red-600" />
                         </button>
                     </div>
+
                     <div className="p-6">
                         <div className="flex items-center justify-between mb-2">
                             <h3 className="text-xl font-bold text-gray-900">{product.name}</h3>
@@ -44,10 +47,13 @@ const ProductsGrid = ({ filteredProducts, gridRef }: ProductComponentProps) => {
                         <p className="text-gray-600 mb-4 leading-relaxed">{product.description}</p>
                         <div className="flex items-center justify-between">
                             <span className="text-2xl font-bold text-red-600">{"$" + product.price}</span>
-                            <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors duration-200 flex items-center space-x-2">
-                                <ShoppingCart size={16} />
-                                <span>Añadir</span>
-                            </button>
+                            {
+                                config &&
+                                <a href={config?.commerceUrl + "/" + product.id} className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors duration-200 flex items-center space-x-2">
+                                    <ShoppingCart size={16} />
+                                    <span>Comprar</span>
+                                </a>
+                            }
                         </div>
                     </div>
                 </div>

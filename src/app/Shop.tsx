@@ -1,7 +1,6 @@
 "use client"
 
 import { useProductsFiltered } from '@/hooks/useProductsFiltered';
-import { Product } from '@/types/product';
 import { ProductFilters } from '@/types/query';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -10,7 +9,7 @@ import ProductsGrid from './ProductsGrid';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const getFilter = (category: string): Partial<ProductFilters>  => {
+const getFilter = (category: string): Partial<ProductFilters> => {
   if (category === "Nuevo") {
     return { sortBy: "createdAt", sortDirection: "desc" }
   } else if (category === "Popular") {
@@ -20,14 +19,15 @@ const getFilter = (category: string): Partial<ProductFilters>  => {
   } else {
     throw Error
   }
-
 }
 
 const Shop = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
-  const [selectedCategory, setSelectedCategory] = useState('Popular');
-  const [products, setProducts] = useState<Product[]>([])
+  const [selectedCategory, setSelectedCategory] = useState('Nuevo');
+  const [filter, setFilter] = useState<Partial<ProductFilters>>({})
+
+  const data = useProductsFiltered(filter);
 
   const categories = ["Nuevo", "Descuento", "Popular"]
 
@@ -57,19 +57,29 @@ const Shop = () => {
     );
   }, [selectedCategory]);
 
-  const { data: productsData } = useProductsFiltered(getFilter(selectedCategory));
-
   useEffect(() => {
-    if (categories && categories.length > 0 && selectedCategory === 'all') {
-      setSelectedCategory(categories[0]);
-    }
-  }, [categories, selectedCategory]);
+    try {
+      if (categories && categories.length > 0 && selectedCategory === 'all') {
+        setSelectedCategory(categories[0]);
+        return;
+      }
+      const nextFilter = getFilter(selectedCategory);
 
-  useEffect(() => {
-    if (productsData && productsData.products !== products) {
-      setProducts(productsData.products);
+      setFilter((currentFilter) => {
+        const isSameFilter = Object.entries(nextFilter).every(
+          ([key, value]) => currentFilter[key as keyof ProductFilters] === value
+        );
+        if (!isSameFilter) {
+          return nextFilter;
+        }
+        return currentFilter;
+      });
+    } catch (error) {
+      console.error('Failed to get filter:', error);
     }
-  }, [productsData, products]);
+  }, [selectedCategory]);
+
+  if (!data) return <div>Loading...</div>;
 
   return (
     <section id="shop" ref={sectionRef} className="py-20 bg-white">
@@ -101,8 +111,8 @@ const Shop = () => {
         </div>
 
         {/* Products Grid */}
-        {products &&
-          <ProductsGrid filteredProducts={products} gridRef={gridRef} />
+        {data &&
+          <ProductsGrid filteredProducts={data} gridRef={gridRef} />
         }
 
         <div className="text-center mt-12">

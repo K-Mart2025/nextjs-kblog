@@ -1,20 +1,11 @@
 "use client"
 
 import { Menu, Phone, ShoppingBag, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -34,9 +25,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
-      }`}
+      className={`fixed w-full top-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm shadow-lg"`}
     >
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">

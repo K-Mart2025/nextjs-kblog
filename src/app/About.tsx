@@ -63,7 +63,8 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div className='relative w-full h-full'>
               <Image
-                fill
+                width={728}
+                height={354}
                 src="/assets/blog/aboutus.webp"
                 alt="Interior del mercado coreano"
                 className="rounded-2xl shadow-2xl w-full h-96 object-cover"

@@ -1,19 +1,9 @@
-"use client"
-
-import ConfigContext from '@/contexts/ConfigContext';
-import { quickLinks, categories, socialLinks } from '@/data/footer';
+import { categories, quickLinks, socialLinks } from '@/data/footer';
+import { fetchConfig } from '@/services/config';
 import { Clock, Mail, MapPin, Phone } from 'lucide-react';
-import { useContext } from 'react';
 
-const Footer = () => {
-  const { config } = useContext(ConfigContext)
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId.replace('#', ''));
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+const Footer = async () => {
+  const config = await fetchConfig()
 
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
@@ -31,7 +21,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Tu mercado de confianza. 
+              Tu mercado de confianza.
               Acercando los sabores de Corea.
             </p>
             <div className="space-y-3">
@@ -41,11 +31,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <Phone size={16} className="text-red-400" />
-                <span className="text-sm">{config?.supportPhone}</span>
+                <span className="text-sm">{config?.config.supportPhone}</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <Mail size={16} className="text-red-400" />
-                <span className="text-sm">{config?.supportEmail}</span>
+                <span className="text-sm">{config?.config.supportEmail}</span>
               </div>
             </div>
           </div>
@@ -56,12 +46,12 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
+                  <a
+                    href={link.href}
                     className="text-gray-300 hover:text-red-400 transition-colors duration-200 text-sm"
                   >
                     {link.label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -94,7 +84,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            
+
             <h4 className="text-lg font-bold mb-4">Síguenos</h4>
             <div className="flex space-x-3">
               {socialLinks.map((social, index) => (
@@ -116,7 +106,7 @@ const Footer = () => {
           <div className="text-center">
             <h4 className="text-xl font-bold mb-4">Mantente informado</h4>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Suscríbete a nuestro boletín para recibir las últimas noticias, 
+              Suscríbete a nuestro boletín para recibir las últimas noticias,
               ofertas especiales y consejos culinarios.
             </p>
             <div className="flex flex-col sm:flex-row max-w-md mx-auto gap-4">
@@ -138,7 +128,7 @@ const Footer = () => {
             <div className="text-gray-400 text-sm">
               © 2025 K Mart. Todos los derechos reservados.
             </div>
-            <div className="flex space-x-6 text-sm">
+            {/* <div className="flex space-x-6 text-sm">
               <a href="#" className="text-gray-400 hover:text-red-400 transition-colors">
                 Política de Privacidad
               </a>
@@ -148,7 +138,7 @@ const Footer = () => {
               <a href="#" className="text-gray-400 hover:text-red-400 transition-colors">
                 Cookies
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

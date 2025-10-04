@@ -3,6 +3,7 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Calendar, Eye, User } from 'lucide-react';
+import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -100,7 +101,9 @@ const Blog = () => {
           <div className="md:col-span-2 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group">
             <div className="md:flex">
               <div className="md:w-1/2 relative overflow-hidden">
-                <img
+                <Image
+                  width={752}
+                  height={1127}
                   src={blogPosts[0].image}
                   alt={blogPosts[0].title}
                   className="w-full h-64 md:h-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -154,7 +157,9 @@ const Blog = () => {
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
             >
               <div className="relative overflow-hidden">
-                <img
+                <Image
+                  width={734}
+                  height={192}
                   src={post.image}
                   alt={post.title}
                   className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"

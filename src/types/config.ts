@@ -1,17 +1,15 @@
-import { ReactNode } from "react";
-
-interface ConfigProviderProps {
-  children: ReactNode;
-}
-interface ConfigContextType {
-  config: ConfigResponse | null;
-  setConfig: React.Dispatch<React.SetStateAction<ConfigResponse | null>>;
-}
 
 interface ConfigResponse {
+  config: Config
+}
+
+interface Config {
   orderPhone?: string;
   supportPhone?: string;
   supportEmail?: string;
+  blogUrl?: string;
+  commerceUrl?: string;
 }
 
-export type { ConfigContextType, ConfigProviderProps, ConfigResponse };
+export type { Config, ConfigResponse };
+
