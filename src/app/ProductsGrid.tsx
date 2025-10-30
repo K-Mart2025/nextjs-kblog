@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-const ProductsGrid = ({ filteredProducts, gridRef }: ProductComponentProps) => {
+export const ProductsGrid = ({ filteredProducts, gridRef }: ProductComponentProps) => {
     const config = useConfig()
     if (!filteredProducts || filteredProducts.length === 0) {
         return (
@@ -26,7 +26,7 @@ const ProductsGrid = ({ filteredProducts, gridRef }: ProductComponentProps) => {
                         <Image
                             width={200}
                             height={200}
-                            src={product.img ? apiUrl + product.img : "/fallback-image.jpg"}
+                            src={product.img ? apiUrl + product.img : ""}
                             alt={product.name}
                             className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
                         />
@@ -61,5 +61,3 @@ const ProductsGrid = ({ filteredProducts, gridRef }: ProductComponentProps) => {
         </div>
     )
 }
-
-export default ProductsGrid

@@ -1,8 +1,15 @@
-function App() {
-  return (
-    <div className="min-h-screen">
-    </div>
-  );
-}
+import { Suspense } from 'react'
+import PostsPageWrapper from './PostsPageWrapper'
+import { PrettyText } from '@/components/PrettyText'
 
-export default App;
+export default function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>
+}) {
+  return (
+    <Suspense fallback={<PrettyText>Loading...</PrettyText>}>
+      <PostsPageWrapper searchParamsPromise={searchParams} />
+    </Suspense>
+  )
+}

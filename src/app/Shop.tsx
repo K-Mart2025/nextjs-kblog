@@ -5,7 +5,7 @@ import { ProductFilters } from '@/types/query';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef, useState } from 'react';
-import ProductsGrid from './ProductsGrid';
+import { ProductsGrid } from './ProductsGrid';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,15 +21,15 @@ const getFilter = (category: string): Partial<ProductFilters> => {
   }
 }
 
-const Shop = () => {
+const categories = ["Nuevo", "Descuento", "Popular"]
+
+export const Shop = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const [selectedCategory, setSelectedCategory] = useState('Nuevo');
   const [filter, setFilter] = useState<Partial<ProductFilters>>({})
 
   const data = useProductsFiltered(filter);
-
-  const categories = ["Nuevo", "Descuento", "Popular"]
 
   useEffect(() => {
 
@@ -124,5 +124,3 @@ const Shop = () => {
     </section>
   );
 };
-
-export default Shop;

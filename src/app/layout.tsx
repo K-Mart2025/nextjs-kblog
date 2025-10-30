@@ -1,8 +1,9 @@
+import { apiUrl } from "@/data/config";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Footer from "./Footer";
+import { Footer } from "./Footer";
 import "./globals.css";
-import Header from "./Header";
+import { Header } from "./Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,10 +15,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "K-Mart",
-  description: "Todo sobre Corea! Recetas, noticias de tus artistas favoritos y demás",
-};
+export async function generateMetadata(
+): Promise<Metadata> {
+  // fetch post information
+  const config = await fetch(`${apiUrl}/config/`).then((res) =>
+    res.json()
+  );
+
+  return {
+    title: config.bseoTitle,
+    description: config.bseoDescription,
+    keywords: config.bseoKeywords
+  };
+}
 
 export default function RootLayout({
   children,

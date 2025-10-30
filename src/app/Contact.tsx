@@ -8,7 +8,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Contact = () => {
+export const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const config = useConfig()
@@ -144,9 +144,8 @@ const Contact = () => {
                 <div className="bg-white p-6 rounded-xl shadow-md">
                   <h4 className="font-bold text-gray-900 mb-3">⏰ Horarios de Atención</h4>
                   <div className="space-y-2 text-sm text-gray-600">
-                    <p>Lunes - Viernes: 9:00 - 21:00</p>
-                    <p>Sábado: 9:00 - 22:00</p>
-                    <p>Domingo: 10:00 - 20:00</p>
+                    <p>Lunes - Sábado: 9:00 - 19:00</p>
+                    <p>Domingo: Cerrado</p>
                   </div>
                 </div>
 
@@ -271,5 +270,3 @@ const Contact = () => {
     </section>
   );
 };
-
-export default Contact;

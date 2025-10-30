@@ -11,7 +11,7 @@ export const getProductsFiltered = async (filters:ProductFilters) => {
       ...(filters.sortBy && { sortBy: filters.sortBy }),
       ...(filters.sortDirection && { sortDirection: filters.sortDirection }),
     });
-    const url = `${apiUrl}/api/client/?${params.toString()}`
+    const url = `${apiUrl}/products/client/?${params.toString()}`
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error("Error en la petición");

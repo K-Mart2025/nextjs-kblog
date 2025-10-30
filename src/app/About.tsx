@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const About = () => {
+export const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -67,7 +67,7 @@ const About = () => {
                 height={354}
                 src="/assets/blog/aboutus.webp"
                 alt="Interior del mercado coreano"
-                className="rounded-2xl shadow-2xl w-full h-96 object-cover"
+                className="rounded-2xl shadow-2xl object-cover"
               />
             </div>
             <div>
@@ -119,5 +119,3 @@ const About = () => {
     </section>
   );
 };
-
-export default About;

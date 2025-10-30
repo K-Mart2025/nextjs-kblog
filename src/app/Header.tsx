@@ -1,11 +1,12 @@
 "use client"
 
+import { useConfig } from "@/hooks/useConfig";
 import { Menu, Phone, ShoppingBag, X } from "lucide-react";
 import { useState } from "react";
 
-const Header = () => {
+export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -22,6 +23,8 @@ const Header = () => {
     /* { id: "contact", label: "Contacto" }, */
     { id: "news", label: "Noticias" },
   ];
+
+  const config = useConfig()
 
   return (
     <header
@@ -51,13 +54,13 @@ const Header = () => {
               </button>
             ))}
             <div className="flex items-center space-x-4">
-              <button className="p-2 text-gray-700 hover:text-red-600 transition-colors">
+              <a href={config?.commerceUrl} className="p-2 text-gray-700 hover:text-red-600 transition-colors">
                 <ShoppingBag size={20} />
-              </button>
-              <button className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors flex items-center space-x-2">
+              </a>
+              <a href={"wa.me/+53" + config?.supportPhone} className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors flex items-center space-x-2">
                 <Phone size={16} />
                 <span>Contactar</span>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -99,5 +102,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

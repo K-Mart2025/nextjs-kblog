@@ -1,9 +1,9 @@
-import { categories, quickLinks, socialLinks } from '@/data/footer';
-import { fetchConfig } from '@/services/config';
-import { Clock, Mail, MapPin, Phone } from 'lucide-react';
+import { categories, quickLinks, socialLinks } from "@/data/footer";
+import { fetchConfig } from "@/services/config";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 
-const Footer = async () => {
-  const config = await fetchConfig()
+export const Footer = async () => {
+  const config = await fetchConfig();
 
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
@@ -21,8 +21,7 @@ const Footer = async () => {
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Tu mercado de confianza.
-              Acercando los sabores de Corea.
+              Tu mercado de confianza. Acercando los sabores de Corea.
             </p>
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-gray-300">
@@ -63,7 +62,10 @@ const Footer = async () => {
             <ul className="space-y-3">
               {categories.slice(0, 6).map((category, index) => (
                 <li key={index}>
-                  <a href="#" className="text-gray-300 hover:text-red-400 transition-colors duration-200 text-sm">
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-red-400 transition-colors duration-200 text-sm"
+                  >
                     {category}
                   </a>
                 </li>
@@ -78,9 +80,8 @@ const Footer = async () => {
               <div className="flex items-center space-x-2">
                 <Clock size={16} className="text-red-400" />
                 <div className="text-sm">
-                  <div className="text-gray-300">Lun - Vie: 9:00 - 21:00</div>
-                  <div className="text-gray-300">Sáb: 9:00 - 22:00</div>
-                  <div className="text-gray-300">Dom: 10:00 - 20:00</div>
+                  <div className="text-gray-300">Lun - Sáb: 9:00 - 19:00</div>
+                  <div className="text-gray-300">Dom: Cerrado</div>
                 </div>
               </div>
             </div>
@@ -102,7 +103,7 @@ const Footer = async () => {
         </div>
 
         {/* Newsletter */}
-        <div className="border-t border-gray-800 pt-8 mb-8">
+        {/*  <div className="border-t border-gray-800 pt-8 mb-8">
           <div className="text-center">
             <h4 className="text-xl font-bold mb-4">Mantente informado</h4>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
@@ -120,7 +121,7 @@ const Footer = async () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Copyright */}
         <div className="border-t border-gray-800 pt-8">
@@ -145,5 +146,3 @@ const Footer = async () => {
     </footer>
   );
 };
-
-export default Footer;

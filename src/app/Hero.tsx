@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Hero = () => {
+export const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
@@ -78,6 +78,13 @@ const Hero = () => {
     }
   };
 
+  const scrollToLocation = () => {
+    const locationSection = document.getElementById("location");
+    if (locationSection) {
+      locationSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section ref={heroRef} className="relative h-screen overflow-hidden">
       {/* Background Video */}
@@ -95,17 +102,13 @@ const Hero = () => {
             videoRef.current.muted = true;
             videoRef.current.play().catch(() => {
               setTimeout(() => {
-                videoRef.current?.play().catch(() => {
-                });
+                videoRef.current?.play().catch(() => {});
               }, 2000); // retry after 2 seconds
             });
           }
         }}
       >
-        <source
-          src="/assets/blog/hero2.mp4"
-          type="video/mp4"
-        />
+        <source src="/assets/blog/hero2.mp4" type="video/mp4" />
       </video>
 
       {/* Overlay */}
@@ -133,7 +136,10 @@ const Hero = () => {
               <Play size={20} />
               <span>Explorar Productos</span>
             </button>
-            <button className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg transition-all duration-300 text-lg font-semibold">
+            <button
+              onClick={scrollToLocation}
+              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg transition-all duration-300 text-lg font-semibold"
+            >
               Ver Ubicación
             </button>
           </div>
@@ -150,5 +156,3 @@ const Hero = () => {
     </section>
   );
 };
-
-export default Hero;

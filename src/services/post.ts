@@ -2,7 +2,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export const postVisit = async () => {
   try {
-    const response = await fetch(`${apiUrl}/api/client/?visit=`);
+    const response = await fetch(`${apiUrl}/blogposts/client/?visit=`);
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
     }
